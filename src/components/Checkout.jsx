@@ -5,6 +5,7 @@ import Modal from "./UI/Modal";
 import CartContext from "./store/CartContext";
 import UserProgressContext from "./store/UserProgressContext";
 import { currencyFormatter } from "./util/formatting";
+import useHttp from "../hooks/useHttp";
 
 export default function Checkout() {
   const cartCtx = useContext(CartContext);
@@ -26,7 +27,8 @@ export default function Checkout() {
     const fd = new FormData(event.target);
     const customerData = Object.fromEntries(fd.entries());
 
-    fetch("http://localhost:3000/orders", {
+
+  useHttp("http://localhost:3000/orders",{
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,7 +39,7 @@ export default function Checkout() {
           customer: customerData,
         },
       }),
-    });
+    })
   }
   return (
     <Modal
