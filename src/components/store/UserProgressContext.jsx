@@ -17,13 +17,13 @@ export function UserProgressContextProvider({children }) {
     setUserProgress("cart");
   }
   function hideCart() {
-    setUserProgress("");
+    setUserProgress(" ");
   }
   function showCheckout() {
     setUserProgress("checkout");
   }
   function hideCheckout() {
-    setUserProgress("");
+    setUserProgress(" ");
   }
 
   const userProgressCtx = {
